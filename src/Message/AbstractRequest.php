@@ -204,7 +204,9 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         $data['address_zip'] = $card->getPostcode();
         $data['address_state'] = $card->getState();
         $data['address_country'] = $card->getCountry();
-        $data['email']           = $card->getEmail();
+        if ($card->getEmail()) {
+            $data['email'] = $card->getEmail();
+        }
 
         return $data;
     }
